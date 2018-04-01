@@ -1,7 +1,10 @@
 {
-    "name": "namelesscoder/patternlab-fluid-patternengine",
+    "name": "rklose/patternlab-fluid-patternengine",
     "type": "patternlab-patternengine",
     "license": "MIT",
+    "replace": {
+        "namelesscoder/patternlab-fluid-patternengine": "^1.2"
+    },
     "require": {
         "pattern-lab/core": "^2.8",
         "typo3fluid/fluid": "^2.4"

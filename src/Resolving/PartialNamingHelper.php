@@ -28,7 +28,7 @@ class PartialNamingHelper
                 return $directory . DIRECTORY_SEPARATOR . 'Resources/Private/Partials/' . $this->determinePatternSubPath($patternName) . '.html';
                 break;
             case 'Templates':
-                return $directory . DIRECTORY_SEPARATOR . 'Resources/Private/Templates/Default/' . implode('/', $parts) . '.html';
+                return $directory . DIRECTORY_SEPARATOR . 'Resources/Private/' . $this->determinePatternSubPath($patternName) . '.html';
                 break;
             case 'Pages':
                 return $directory . DIRECTORY_SEPARATOR . 'Resources/Private/Templates/Page/' . implode('/', $parts) . '.html';
