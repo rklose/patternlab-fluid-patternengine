@@ -28,8 +28,8 @@ trait FluidLoader
         $this->view = new TemplateView();
         $templatePaths = new PatternLabTemplatePaths();
         $templatePaths->setFormat(Config::getOption("patternExtension"));
-        $templatePaths->setLayoutRootPaths([Config::getOption("styleguideKitPath") . DIRECTORY_SEPARATOR . 'Resources/Private/Layouts/', Config::getOption("sourceDir") . DIRECTORY_SEPARATOR . '_layouts/']);
-        $templatePaths->setPartialRootPaths([Config::getOption("styleguideKitPath") . DIRECTORY_SEPARATOR . 'Resources/Private/Partials/', Config::getOption("sourceDir") . DIRECTORY_SEPARATOR . '_patterns/']);
+        $templatePaths->setLayoutRootPaths([Config::getOption("styleguideKitPath") . DIRECTORY_SEPARATOR . 'Resources/Private/Layouts/', Config::getOption("sourceDir") . DIRECTORY_SEPARATOR . '_Layouts/']);
+        $templatePaths->setPartialRootPaths([Config::getOption("styleguideKitPath") . DIRECTORY_SEPARATOR . 'Resources/Private/Partials/', Config::getOption("sourceDir") . DIRECTORY_SEPARATOR . '_Patterns/']);
         $templatePaths->setTemplateRootPaths([Config::getOption("styleguideKitPath") . DIRECTORY_SEPARATOR . 'Resources/Private/Templates/', Config::getOption("sourceDir") . DIRECTORY_SEPARATOR . 'Templates/']);
         $this->view->getRenderingContext()->setTemplatePaths($templatePaths);
         $this->view->getRenderingContext()->setTemplateParser(new EmulatingTemplateParser());
