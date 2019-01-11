@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+
 namespace NamelessCoder\FluidPatternEngine\Resolving;
 
 use PatternLab\Config;
@@ -22,6 +23,9 @@ class PartialNamingHelper
         $parts = array_map('ucfirst', explode('-', $patternName));
         $type = array_shift($parts);
         switch ($type) {
+            case 'Principles':
+            case 'Basics':
+            case 'Components':
             case 'Atoms':
             case 'Molecules':
             case 'Organisms':
@@ -30,6 +34,8 @@ class PartialNamingHelper
             case 'Templates':
                 return $directory . DIRECTORY_SEPARATOR . 'Resources/Private/' . $this->determinePatternSubPath($patternName) . '.html';
                 break;
+            case 'Features':
+            case 'Applications':
             case 'Pages':
                 return $directory . DIRECTORY_SEPARATOR . 'Resources/Private/Templates/Page/' . implode('/', $parts) . '.html';
                 break;
@@ -63,6 +69,7 @@ class PartialNamingHelper
         }
         return $patternName;
     }
+
     public function determinePatternCleanName(string $patternName): string
     {
         $configuration = PatternData::get();
@@ -80,5 +87,24 @@ class PartialNamingHelper
             }
         }
         return $patternName;
+    }
+
+    public function getPatternConfiguration(string $patternName)
+    {
+        $configuration = PatternData::get();
+        foreach ($configuration as $patternConfiguration) {
+            if ($patternConfiguration['category'] === 'pattern') {
+                if (
+                    $patternConfiguration['name'] === $patternName
+                    || $patternConfiguration['path'] === $patternName
+                    || $patternConfiguration['nameDash'] === $patternName
+                    || $patternConfiguration['nameClean'] === $patternName
+                    || $patternConfiguration['partial'] === $patternName
+                ) {
+                    return $patternConfiguration;
+                }
+            }
+        }
+        return false;
     }
 }
